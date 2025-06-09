@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="static/css/globals.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Подключаем Font Awesome для иконок -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+
+    <style>
+      /* Стили для карты */
+      .map-section {
+        padding: 40px 20px;
+        background: #f9f9f9;
+        margin-top: 50px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+        font-size: 28px;
+      }
+
+      .yandex-map-container {
+
+        width: 100%;
+        max-width: 1200px;
+        height: 500px;
+        margin: 0 auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      }
+
+      .map-address {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      .map-address i {
+        color: #e74c3c;
+        margin-right: 8px;
+      }
+
+      .map-address p {
+        margin: 8px 0;
+      }
+
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        .yandex-map-container {
+          height: 350px;
+        }
+
+        .section-title {
+          font-size: 22px;
+        }
+
+        .map-address {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="landing-page">
+      <div class="navigation">
+        <img src="static/images/address.png" alt="Адрес" />
+        <a href="/"><img src="static/images/start.png" alt="Главная" /></a>
+        <a href="/catalog"><img src="static/images/catalog.png" alt="Каталог" /></a>
+        {% if 'user_id' not in session %}
+          <a href="/login" class="nav-text-link">Вход</a>
+          <a href="/registration"><img src="static/images/reg2.png" alt="Регистрация" /></a>
+        {% else %}
+          <span class="nav-text-link">{{ current_user.username }}</span>
+          <a href="/logout" class="nav-text-link">Выход</a>
+        {% endif %}
+      </div>
+
+      <div class="div">
+        <img class="copy" src="static/images/image2.png" alt="" />
+        <img class="hero-image" src="static/images/image3.png" alt="" />
+        <img class="image-2" src="static/images/image4.png" alt="" />
+        <img class="image" src="static/images/image7.png" alt="" />
+        <img class="cards" src="static/images/cards.png" alt="" />
+      </div>
+    </div>
+
+    <!-- Секция с картой Метрополиса -->
+    <div class="map-section">
+      <h2 class="section-title">Мы находимся в ТЦ "Метрополис"</h2>
+      <div id="yandex-map" class="yandex-map-container"></div>
+      <div class="map-address">
+        <p><i class="fas fa-map-marker-alt"></i> Ленинградское шоссе, 16А, стр. 4</p>
+        <p><i class="fas fa-subway"></i> 5 минут от метро Войковская</p>
+        <p><i class="fas fa-car"></i> Бесплатная парковка на 2500 мест</p>
+      </div>
+    </div>
+
+    <!-- Подключение API Яндекс.Карт -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_API_ключ&lang=ru_RU"></script>
+
+    <!-- Скрипт инициализации карты -->
+    <script>
+      ymaps.ready(init);
+
+      function init() {
+        // Координаты ТЦ Метрополис
+        const metropolisCoords = [55.823013, 37.498591];
+
+        // Создание карты
+        const myMap = new ymaps.Map("yandex-map", {
+          center: metropolisCoords,
+          zoom: 17,
+          controls: ['zoomControl', 'typeSelector']
+        });
+
+        // Создание метки
+        const placemark = new ymaps.Placemark(metropolisCoords, {
+          hintContent: 'ТЦ Метрополис',
+          balloonContent: `
+            <div style="padding: 10px;">
+              <h3 style="margin: 0 0 10px 0; color: #e74c3c;">ТЦ "Метрополис"</h3>
+              <p style="margin: 5px 0;">Ленинградское шоссе, 16А, стр. 4</p>
+              <p style="margin: 5px 0;"><i class="fas fa-clock"></i> 10:00-22:00</p>
+              <a href="https://www.metropolis.ru"
+                 target="_blank"
+                 style="color: #2980b9; text-decoration: none;">
+                <i class="fas fa-external-link-alt"></i> Официальный сайт
+              </a>
+            </div>
+          `
+        }, {
+          // Настройки иконки
+          iconLayout: 'default#image',
+          iconImageHref: 'https://cdn-icons-png.flaticon.com/512/2776/2776067.png',
+          iconImageSize: [48, 48],
+          iconImageOffset: [-24, -48]
+        });
+
+        // Добавление метки на карту
+        myMap.geoObjects.add(placemark);
+
+        // Автоматическое открытие балуна
+        placemark.balloon.open();
+
+        // Адаптация карты при ресайзе
+        window.addEventListener('resize', function() {
+          myMap.container.fitToViewport();
+        });
+      }
+    </script>
+  <!-- Футер с разделом "О нас" -->
+<footer class="site-footer" style="
+  background: #2c3e50;
+  color: white;
+  padding: 50px;
+  margin-top: auto;
+  z-index: 10;
+  top: -1300px;
+  border-top: 3px solid #e74c3c;
+">
+    <div class="footer-container">
+      <div class="about-section">
+        <h3>Магазин электроники "Electra"</h3>
+        <p>Мы предлагаем широкий ассортимент электроники и бытовой техники от ведущих мировых производителей. Более 10 лет на рынке, 100 000 довольных клиентов и гарантия качества на все товары.</p>
+
+        <div class="footer-contacts">
+          <p><i class="fas fa-map-marker-alt"></i> Москва, Ленинградский пр-т, 16А, ТЦ "Метрополис"</p>
+          <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+          <p><i class="fas fa-envelope"></i> info@electra.ru</p>
+          <p><i class="fas fa-clock"></i> Ежедневно с 9:00 до 21:00</p>
+        </div>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-vk"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>© 2025 Electra. Все права защищены.</p>
+    </div>
+  </footer>
+</body>
+</html>

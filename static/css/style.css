@@ -1,0 +1,479 @@
+/* Основные стили страницы */
+.landing-page {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.landing-page .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 3811px;
+  position: relative;
+  padding-top: 164px; /* Отступ для фиксированной навигации */
+}
+
+/* Навигационная панель */
+.landing-page .navigation {
+  position: fixed;
+  width: 1440px;
+  height: 164px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee; /* Добавляем разделитель */
+}
+
+.landing-page .navigation a {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin: 0 15px;
+  transition: opacity 0.3s;
+}
+
+.landing-page .navigation a:hover {
+  opacity: 0.8;
+}
+
+/* Стиль для текстовых ссылок */
+.landing-page .navigation .nav-text-link {
+  color: #333333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 15px;
+  white-space: nowrap;
+}
+
+.landing-page .navigation .nav-text-link:hover {
+  color: #4CAF50;
+}
+
+.landing-page .navigation img {
+  height: 80%;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+/* Основные элементы страницы */
+.landing-page .copy {
+  position: absolute;
+  width: 844px;
+  height: 137px;
+  top: 212px;
+  left: 79px;
+}
+
+.landing-page .hero-image {
+  position: absolute;
+  width: 1280px;
+  height: 640px;
+  top: 381px;
+  left: 80px;
+  object-fit: cover;
+}
+
+.landing-page .img {
+  position: absolute;
+  width: 562px;
+  height: 46px;
+  top: 181px;
+  left: 83px;
+}
+
+.landing-page .frame {
+  position: absolute;
+  width: 1279px;
+  height: 541px;
+  top: 277px;
+  left: 80px;
+}
+
+.landing-page .image-2 {
+  position: absolute;
+  width: 1279px;
+  height: 541px;
+  top: 1150px;
+  left: 80px;
+  object-fit: cover;
+}
+
+.landing-page .element {
+  position: absolute;
+  width: 1228px;
+  height: 1147px;
+  top: 1893px;
+  left: 82px;
+}
+
+.landing-page .image {
+  position: absolute;
+  width: 567px;
+  height: 36px;
+  top: 1785px;
+  left: 98px;
+}
+
+.landing-page .cards {
+  position: absolute;
+  width: 1281px;
+  height: 430px;
+  top: 1893px;
+  left: 82px;
+}
+
+/* Стили для страницы каталога */
+.catalog {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.catalog .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 611px;
+  position: relative;
+  padding-top: 164px;
+}
+
+.catalog .img {
+  position: absolute;
+  width: 562px;
+  height: 46px;
+  top: 212px;
+  left: 83px;
+}
+
+.catalog .frame {
+  position: absolute;
+  width: 1279px;
+  height: 541px;
+  top: 298px;
+  left: 80px;
+}
+
+/* Стили для форм */
+.registration-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 900;
+}
+
+.registration-form-container {
+  width: 500px;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+  margin-top: 164px;
+}
+
+.registration-form input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.registration-form button {
+  width: 100%;
+  padding: 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.registration-form button:hover {
+  background-color: #45a049;
+}
+
+.flash-messages {
+  margin-bottom: 20px;
+}
+
+.flash-messages li {
+  padding: 10px;
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 5px;
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+.login-link a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Адаптивные стили */
+@media (max-width: 1440px) {
+  .landing-page .navigation,
+  .landing-page .div,
+  .catalog .div {
+    width: 100%;
+    max-width: 1440px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-page .navigation {
+    height: 120px;
+    padding: 10px;
+  }
+
+  .landing-page .navigation img {
+    height: 60%;
+  }
+
+  .landing-page .navigation .nav-text-link {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  .landing-page .div,
+  .catalog .div {
+    padding-top: 120px;
+  }
+
+  .registration-form-container {
+    width: 90%;
+    padding: 20px;
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-page .navigation {
+    height: 100px;
+  }
+
+  .landing-page .navigation .nav-text-link {
+    font-size: 14px;
+    padding: 5px 8px;
+  }
+
+  .landing-page .div,
+  .catalog .div {
+    padding-top: 100px;
+  }
+}
+
+/* Стили для текстовых ссылок в навигации */
+.navigation .nav-text-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 15px;
+  margin: 0 5px;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+.navigation .nav-text-link:hover {
+  color: #4CAF50;
+}
+
+/* Для авторизованного пользователя */
+.navigation .nav-text-link:last-child {
+  margin-left: 15px;
+}
+
+.catalog .navigation,
+.landing-page .navigation {
+    position: fixed;
+    width: 100%;
+    max-width: 1440px;
+    height: 164px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+/* Отступ для основного контента */
+.catalog .div,
+.landing-page .div {
+    padding-top: 164px !important;
+}
+
+/* Стили для текстовых ссылок */
+.navigation a.nav-text-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 15px;
+    margin: 0 10px;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.navigation a.nav-text-link:hover {
+    color: #4CAF50;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .catalog .navigation,
+    .landing-page .navigation {
+        height: 120px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .navigation img {
+        height: 50px !important;
+    }
+
+    .catalog .div,
+    .landing-page .div {
+        padding-top: 120px !important;
+    }
+}
+
+.map-section {
+  top: -1500px;
+
+  padding: 40px 20px;
+  background: #f9f9f9;
+  margin: 0 auto; /* Убрали отрицательные margin */
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  border-radius: 15px 15px 0 0; /* Скруглили только верхние углы */
+  box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.yandex-map-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px; /* Добавили небольшой отступ */
+}
+
+.map-address {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  margin-top: 15px;
+}
+
+.map-address i {
+  color: #e74c3c;
+  margin-right: 8px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .yandex-map-container {
+    height: 350px;
+  }
+}
+
+.site-footer {
+  background: #2c3e50;
+  margin-top: -950px;
+  color: white;
+  padding: 50px 0 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+    .about-section h3 {
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      color: white;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .footer-contacts p {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-contacts i {
+      margin-right: 10px;
+      color: white;
+      width: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .footer-social a {
+      color: white;
+      font-size: 24px;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      margin-top: 40px;
+      color: white;
+    }
+

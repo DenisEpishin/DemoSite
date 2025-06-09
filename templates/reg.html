@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="static/css/globals.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+    <div class="landing-page">
+      <div class="navigation">
+        <img src="static/images/address.png" alt="Адрес" />
+        <a href="/"><img src="static/images/start.png" alt="Главная" /></a>
+        <a href="/catalog"><img src="static/images/catalog.png" alt="Каталог" /></a>
+        <a href="/login" class="nav-text-link">Вход</a>
+        <a href="/registration"><img src="static/images/reg2.png" alt="Регистрация" /></a>
+      </div>
+
+      <div class="div">
+        <!-- Фоновые изображения -->
+        <img class="copy" src="static/images/image2.png" alt="" />
+        <img class="hero-image" src="static/images/image3.png" alt="" />
+        <img class="image-2" src="static/images/image5.png" alt="" />
+        <img class="element" src="static/images/image6.png" alt="" />
+        <img class="image" src="static/images/image7.png" alt="" />
+        <img class="cards" src="static/images/cards.png" alt="" />
+
+        <!-- Форма регистрации -->
+        <div class="registration-overlay">
+          <div class="registration-form-container">
+            <h1>Регистрация</h1>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flash-messages">
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+
+            <form class="registration-form" method="POST" action="{{ url_for('register') }}">
+              <label>Имя пользователя:</label>
+              <input type="text" name="username" required placeholder="Придумайте логин">
+
+              <label>Email:</label>
+              <input type="email" name="email" required placeholder="Ваш email">
+
+              <label>Пароль:</label>
+              <input type="password" name="password" required placeholder="Не менее 8 символов">
+
+              <button type="submit">Зарегистрироваться</button>
+            </form>
+
+            <div class="login-link">
+              Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

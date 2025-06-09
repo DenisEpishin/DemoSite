@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="static/css/globals.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+  <body>
+    <div class="landing-page">
+      <div class="navigation">
+        <img src="static/images/address.png" alt="Адрес" />
+        <a href="/"><img src="static/images/start.png" alt="Главная" /></a>
+        <a href="/catalog"><img src="static/images/catalog.png" alt="Каталог" /></a>
+        {% if 'user_id' not in session %}
+          <a href="/login" class="nav-text-link">Вход</a>
+          <a href="/registration"><img src="static/images/reg2.png" alt="Регистрация" /></a>
+        {% else %}
+          <span class="nav-text-link">{{ current_user.username }}</span>
+          <a href="/logout" class="nav-text-link">Выход</a>
+        {% endif %}
+      </div>
+      <div class="div" style="height: 1511px;">
+        <img class="img" src="static/images/image.png" />
+        <img class="frame" src="static/images/image4.png" />
+      </div>
+    </div>
+
+  <!-- Футер с разделом "О нас" -->
+<footer class="site-footer" style="
+  background: #2c3e50;
+  color: white;
+  padding: 50px;
+  margin-top: auto;
+  z-index: 10;
+  top: -600px;
+  border-top: 3px solid #e74c3c;
+">
+    <div class="footer-container">
+      <div class="about-section">
+        <h3>Магазин электроники "Electra"</h3>
+        <p>Мы предлагаем широкий ассортимент электроники и бытовой техники от ведущих мировых производителей. Более 10 лет на рынке, 100 000 довольных клиентов и гарантия качества на все товары.</p>
+
+        <div class="footer-contacts">
+          <p><i class="fas fa-map-marker-alt"></i> Москва, Ленинградский пр-т, 16А, ТЦ "Метрополис"</p>
+          <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+          <p><i class="fas fa-envelope"></i> info@electra.ru</p>
+          <p><i class="fas fa-clock"></i> Ежедневно с 9:00 до 21:00</p>
+        </div>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-vk"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p>© 2025 Electra. Все права защищены.</p>
+    </div>
+  </footer>
+
+
+  </body>
+</html>

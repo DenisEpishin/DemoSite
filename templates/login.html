@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Вход</title>
+    <link rel="stylesheet" href="static/css/globals.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+    <div class="landing-page">
+      <div class="navigation">
+        <img src="static/images/address.png" alt="Адрес" />
+        <a href="/"><img src="static/images/start.png" alt="Главная" /></a>
+        <a href="/catalog"><img src="static/images/catalog.png" alt="Каталог" /></a>
+        {% if 'user_id' not in session %}
+          <a href="/login" class="nav-text-link">Вход</a>
+          <a href="/registration"><img src="static/images/reg2.png" alt="Регистрация" /></a>
+        {% else %}
+          <span class="nav-text-link">{{ current_user.username }}</span>
+          <a href="/logout" class="nav-text-link">Выход</a>
+        {% endif %}
+      </div>
+
+      <div class="div">
+        <div class="registration-overlay">
+          <div class="registration-form-container">
+            <h1>Вход в аккаунт</h1>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flash-messages">
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+
+            <form class="registration-form" method="POST" action="{{ url_for('login') }}">
+              <label>Имя пользователя:</label>
+              <input type="text" name="username" required placeholder="Ваш логин">
+
+              <label>Пароль:</label>
+              <input type="password" name="password" required placeholder="Ваш пароль">
+
+              <button type="submit">Войти</button>
+            </form>
+
+            <div class="login-link">
+              Нет аккаунта? <a href="{{ url_for('registration') }}">Зарегистрируйтесь</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
